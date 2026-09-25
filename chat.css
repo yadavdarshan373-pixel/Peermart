@@ -1,0 +1,128 @@
+.messages-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 300px) 1fr;
+  min-height: 520px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--card);
+  box-shadow: var(--shadow-card);
+}
+
+.conversation-list {
+  border-right: 1px solid var(--line);
+  padding: 10px;
+  background: color-mix(in srgb, var(--bg) 70%, var(--card));
+  overflow: auto;
+}
+
+.conversation {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  padding: 12px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+}
+
+.conversation:hover,
+.conversation.selected {
+  background: var(--card);
+  box-shadow: var(--shadow-card);
+}
+
+.conversation span {
+  color: var(--mute);
+  font-size: 0.8rem;
+}
+
+.chat-panel {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.chat-header {
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.chat-header .meta {
+  display: block;
+  margin-top: 3px;
+}
+
+.chat-messages {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  overflow: auto;
+  min-height: 280px;
+  background: var(--bg);
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: 75%;
+  padding: 8px 11px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+}
+
+.message small {
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+.mine-message {
+  align-self: flex-end;
+  background: #2563eb;
+  color: #fff;
+}
+
+.their-message {
+  align-self: flex-start;
+  background: var(--card);
+  border: 1px solid var(--line);
+}
+
+.chat-form {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid var(--line);
+  background: var(--card);
+}
+
+.chat-form input {
+  flex: 1;
+}
+
+.empty-state {
+  color: var(--mute);
+  font-size: 0.9rem;
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+}
+
+@media (max-width: 700px) {
+  .messages-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .conversation-list {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    max-height: 180px;
+  }
+}

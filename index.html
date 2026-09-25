@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PeerMart — Buy & Sell Online</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="auth.css">
+  <link rel="stylesheet" href="marketplace.css">
+  <link rel="stylesheet" href="chat.css">
+</head>
+<body>
+
+  <section id="login" class="login-screen">
+    <div class="login-copy">
+      <div class="logo">PeerMart</div>
+      <p class="brand-kicker">India’s peer-to-peer store for premium gadgets & vehicles</p>
+      <h1>Shop phones, cars, bikes and laptops from verified sellers.</h1>
+      <p>Compare prices, chat with sellers, and checkout in a few clicks — with no marketplace commission.</p>
+      <ul class="login-highlights">
+        <li>1 lakh+ live listings</li>
+        <li>Verified seller badges</li>
+        <li>Secure in-app chat</li>
+      </ul>
+    </div>
+
+    <div class="login-card">
+      <p class="eyebrow">Sign in</p>
+      <h2>Welcome to PeerMart</h2>
+      <p class="login-sub">Use your name and email to start shopping or selling.</p>
+      <form id="loginForm">
+        <label for="userName">Full name</label>
+        <input type="text" id="userName" required placeholder="Alex Smith" autocomplete="name">
+
+        <label for="userEmail">Email</label>
+        <input type="email" id="userEmail" required placeholder="alex@example.com" autocomplete="email">
+
+        <button type="submit" class="btn">Continue</button>
+      </form>
+      <p class="login-note">By continuing, you agree to PeerMart’s Terms and Privacy Policy.</p>
+    </div>
+  </section>
+
+  <section id="roleChoice" class="role-screen hide">
+    <div class="role-card">
+      <p class="eyebrow">How do you want to use PeerMart?</p>
+      <h2>Choose your shopping mode</h2>
+      <p class="role-label">You can log out anytime and switch later.</p>
+      <div class="role-options">
+        <button class="role-option" data-role="buyer">
+          <span class="role-icon">🛍️</span>
+          <strong>I’m shopping</strong>
+          <small>Browse deals, message sellers, and place orders.</small>
+        </button>
+        <button class="role-option" data-role="seller">
+          <span class="role-icon">📦</span>
+          <strong>I’m selling</strong>
+          <small>List products, manage inventory, and talk to buyers.</small>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <div id="app" class="store hide">
+    <div class="promo-bar">Free shipping over ₹499 &nbsp;·&nbsp; 7-day easy returns &nbsp;·&nbsp; Pay on delivery available</div>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="brand-lockup">
+          <div class="logo">PeerMart</div>
+        </div>
+
+        <div class="header-search">
+          <select id="categoryFilter" aria-label="Category">
+            <option value="">All</option>
+            <option value="Mobile Phones">Mobiles</option>
+            <option value="Cars">Cars</option>
+            <option value="Bikes">Bikes</option>
+            <option value="Laptops">Laptops</option>
+          </select>
+          <input type="search" id="searchInput" placeholder="Search for mobiles, cars, bikes, laptops and more" aria-label="Search products">
+        </div>
+
+        <div class="account">
+          <div class="account-meta">
+            <span class="account-hello">Hello</span>
+            <span id="welcome">User · Role</span>
+          </div>
+          <button id="theme" class="btn alt header-icon-btn" type="button">Light mode</button>
+          <button id="logout" class="btn alt" type="button">Sign out</button>
+        </div>
+      </div>
+    </header>
+
+    <nav class="store-nav">
+      <div class="store-nav-inner">
+        <div class="cat-links" id="categoryChips">
+          <button type="button" class="chip active" data-cat="">All</button>
+          <button type="button" class="chip" data-cat="Mobile Phones">Mobiles</button>
+          <button type="button" class="chip" data-cat="Cars">Cars</button>
+          <button type="button" class="chip" data-cat="Bikes">Bikes</button>
+          <button type="button" class="chip" data-cat="Laptops">Laptops</button>
+        </div>
+        <div class="app-nav">
+          <button class="tab active" data-view="marketplace">Store</button>
+          <button class="tab" data-view="sell">Sell</button>
+          <button class="tab" data-view="messages">Inbox <span class="badge" id="messageCount">0</span></button>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <p class="role-hint" id="roleHint"></p>
+
+      <section id="marketplaceView" class="app-view">
+        <div class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">Deals of the day</p>
+            <h2>Upgrade your setup without the showroom markup.</h2>
+            <p>Verified used and nearly-new phones, cars, bikes and laptops from people near you.</p>
+          </div>
+          <div class="hero-stats">
+            <div><b>100+</b><span>brands</span></div>
+            <div><b>₹0</b><span>listing fee</span></div>
+            <div><b>24×7</b><span>seller chat</span></div>
+          </div>
+        </div>
+
+        <div class="benefits">
+          <div class="benefit"><strong>PeerMart Assured</strong><span>Checked listings from trusted sellers</span></div>
+          <div class="benefit"><strong>Best price</strong><span>Compare similar products instantly</span></div>
+          <div class="benefit"><strong>Easy returns</strong><span>7-day replacement on eligible items</span></div>
+          <div class="benefit"><strong>Secure pay</strong><span>Protected checkout in this demo</span></div>
+        </div>
+
+        <div class="catalog-head">
+          <div>
+            <h2>Top picks for you</h2>
+            <p class="stats">Showing <b id="productCount">0</b> results</p>
+          </div>
+        </div>
+
+        <div class="grid" id="productGrid"></div>
+      </section>
+
+      <section id="sellView" class="app-view hide">
+        <div class="seller-layout">
+          <div class="panel">
+            <p class="eyebrow">Seller hub</p>
+            <h2>Create a listing</h2>
+            <p class="panel-lead">Add photos, a fair price, and condition details so buyers can purchase with confidence.</p>
+            <form id="sellForm">
+              <label for="productTitle">Product title</label>
+              <input type="text" id="productTitle" required placeholder="Apple iPhone 14 Pro, 128GB, Deep Purple">
+
+              <div class="row">
+                <div>
+                  <label for="productCategory">Category</label>
+                  <select id="productCategory" required>
+                    <option value="Mobile Phones">Mobile Phones</option>
+                    <option value="Cars">Cars</option>
+                    <option value="Bikes">Bikes</option>
+                    <option value="Laptops">Laptops</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="productPrice">Price (₹)</label>
+                  <input type="number" id="productPrice" required min="1" step="1" placeholder="52000">
+                </div>
+              </div>
+
+              <label for="productImage">Image URL</label>
+              <input type="url" id="productImage" placeholder="https://images.unsplash.com/...">
+
+              <label for="productDescription">Description</label>
+              <textarea id="productDescription" rows="4" required placeholder="Condition, accessories, purchase year, and why you’re selling."></textarea>
+
+              <button type="submit" class="btn">Publish listing</button>
+            </form>
+          </div>
+
+          <div class="panel">
+            <h2>Your inventory</h2>
+            <div id="myListingsContainer"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="messagesView" class="app-view hide">
+        <div class="inbox-head">
+          <h2>Messages</h2>
+          <p class="meta">Chat with buyers and sellers about a listing.</p>
+        </div>
+        <div class="messages-layout">
+          <div class="conversation-list" id="conversationList">
+            <p class="empty-state">No conversations yet.</p>
+          </div>
+          <div class="chat-panel" id="chatPanel">
+            <div class="empty-state" style="margin: auto;">Select a conversation to start chatting.</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div>
+          <div class="logo">PeerMart</div>
+          <p>A peer-to-peer store for premium mobiles, vehicles and laptops.</p>
+        </div>
+        <div>
+          <h3>Shop</h3>
+          <span>Mobiles</span>
+          <span>Cars</span>
+          <span>Bikes</span>
+          <span>Laptops</span>
+        </div>
+        <div>
+          <h3>Help</h3>
+          <span>Order tracking</span>
+          <span>Returns</span>
+          <span>Safety guidelines</span>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <span>About</span>
+          <span>Privacy Policy</span>
+          <span>Terms of Service</span>
+        </div>
+      </div>
+      <p class="footer-copy">© 2026 PeerMart. Demo storefront — listings are for demonstration only.</p>
+    </footer>
+  </div>
+
+  <div id="ov" class="overlay hide">
+    <div class="modal" id="modal"></div>
+  </div>
+
+  <div id="toastContainer"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
