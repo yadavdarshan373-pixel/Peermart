@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PeerMart — Peer-to-Peer Marketplace</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Promo Bar -->
+  <div class="promo-bar">
+    ✨ Welcome to PeerMart: Buy & sell verified electronics, vehicles, appliances, and more!
+  </div>
+
+  <!-- 1. AUTH SCREEN -->
+  <section id="login" class="login-screen">
+    <div class="login-copy">
+      <span class="eyebrow">Peer-to-Peer Marketplace</span>
+      <h1>Trade securely within your trusted network.</h1>
+      <p>PeerMart connects local buyers and sellers directly. List your items or find great second-hand deals instantly.</p>
+      <ul class="login-highlights">
+        <li>📱 18 Categories</li>
+        <li>💬 Direct Messaging</li>
+        <li>🛡️ Verified Listings</li>
+      </ul>
+    </div>
+    <div class="login-card">
+      <h2>Sign in or register</h2>
+      <p class="login-sub">Enter your details to access the platform.</p>
+      <form id="loginForm">
+        <label for="userName">Your Name</label>
+        <input id="userName" required placeholder="e.g., Alex Johnson" autocomplete="name">
+        
+        <label for="userEmail">Email Address</label>
+        <input id="userEmail" type="email" required placeholder="alex@example.com" autocomplete="email">
+
+        <label for="userPassword">Password</label>
+        <input id="userPassword" type="password" required placeholder="••••••••" autocomplete="current-password">
+
+        <button class="btn" type="submit">Continue to PeerMart</button>
+      </form>
+      <p class="login-note">By continuing, you agree to PeerMart's Terms of Use & Privacy Policy.</p>
+    </div>
+  </section>
+
+  <!-- 2. ROLE SELECTION SCREEN -->
+  <section id="roleChoice" class="role-screen hide">
+    <div class="role-card">
+      <span class="eyebrow">Account Setup</span>
+      <h2>How will you use PeerMart?</h2>
+      <p class="role-label">Choose your primary role. You can always change or explore both later.</p>
+      <div class="role-options">
+        <button class="role-option" data-role="buyer">
+          <span class="role-icon">🛍️</span>
+          <div>
+            <strong>I want to Buy</strong>
+            <small>Browse items, chat with local sellers, and find great deals.</small>
+          </div>
+        </button>
+        <button class="role-option" data-role="seller">
+          <span class="role-icon">📦</span>
+          <div>
+            <strong>I want to Sell</strong>
+            <small>List your products, manage inventory, and track sales revenue.</small>
+          </div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. MAIN STOREFRONT APPLICATION -->
+  <div id="app" class="hide">
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="brand-lockup">
+          <span class="logo">PeerMart</span>
+        </div>
+        <div class="header-search">
+          <select id="categoryFilter" aria-label="Category filter">
+            <option value="">All Categories</option>
+            <option value="Mobile Phones">Mobile Phones</option>
+            <option value="Laptops">Laptops</option>
+            <option value="Cars">Cars</option>
+            <option value="Car Parts">Car Parts</option>
+            <option value="Bikes">Bikes</option>
+            <option value="Calculators">Calculators</option>
+            <option value="Kitchen Appliances">Kitchen Appliances</option>
+            <option value="Large Appliances">Large Appliances</option>
+            <option value="Audio & Sound">Audio & Sound</option>
+            <option value="Smartwatches">Smartwatches</option>
+            <option value="Cameras">Cameras</option>
+            <option value="Gaming Consoles">Gaming Consoles</option>
+            <option value="Home Entertainment">Home Entertainment</option>
+            <option value="Fitness">Fitness</option>
+            <option value="Office Electronics">Office Electronics</option>
+            <option value="Smart Home">Smart Home</option>
+            <option value="Tools & Hardware">Tools & Hardware</option>
+            <option value="Furniture">Furniture</option>
+          </select>
+          <input id="searchInput" placeholder="Search for anything (e.g., iPhone, Toyota, Laptop)...">
+        </div>
+        <div class="account">
+          <div class="account-meta">
+            <span class="account-hello">Hello,</span>
+            <span id="welcome">User</span>
+          </div>
+          <button class="btn alt" id="theme">Dark mode</button>
+          <button class="btn alt" id="logout">Sign out</button>
+        </div>
+      </div>
+      <nav class="store-nav">
+        <div class="store-nav-inner">
+          <div class="cat-links">
+            <button class="chip active" data-cat="">All</button>
+            <button class="chip" data-cat="Mobile Phones">Phones</button>
+            <button class="chip" data-cat="Laptops">Laptops</button>
+            <button class="chip" data-cat="Cars">Cars</button>
+            <button class="chip" data-cat="Bikes">Bikes</button>
+            <button class="chip" data-cat="Audio & Sound">Audio</button>
+            <button class="chip" data-cat="Gaming Consoles">Gaming</button>
+            <button class="chip" data-cat="Home Entertainment">TVs</button>
+            <button class="chip" data-cat="Furniture">Furniture</button>
+          </div>
+          <div class="app-nav">
+            <button class="tab active" data-view="marketplace">Marketplace</button>
+            <button class="tab" data-view="messages">Messages <span class="badge" id="messageCount">2</span></button>
+            <button class="tab" data-view="sell" data-role-target="seller">Sell Item</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <p class="role-hint" id="roleHint">Buyer account</p>
+
+      <!-- Marketplace View -->
+      <section id="marketplaceView" class="app-view">
+        <div class="hero">
+          <div>
+            <span class="eyebrow">Featured Marketplace</span>
+            <h2>Find great local deals on verified items.</h2>
+            <p>Explore listings across 18 unique categories with direct chat access and peer-to-peer security.</p>
+          </div>
+          <div class="hero-stats">
+            <div><b>18</b><span>Categories Available</span></div>
+            <div><b>100%</b><span>Verified Local Peers</span></div>
+          </div>
+        </div>
+
+        <div class="benefits">
+          <div class="benefit">
+            <strong>🛡️ Secure Transactions</strong>
+            <span>Direct communication & safe meetups.</span>
+          </div>
+          <div class="benefit">
+            <strong>⚡ Instant Chat</strong>
+            <span>Negotiate pricing directly with sellers.</span>
+          </div>
+          <div class="benefit">
+            <strong>🔍 Broad Selection</strong>
+            <span>Vehicles, electronics, appliances & more.</span>
+          </div>
+          <div class="benefit">
+            <strong>💡 No Middleman</strong>
+            <span>Keep pricing transparent and fair.</span>
+          </div>
+        </div>
+
+        <div class="catalog-head">
+          <h2>Explore All Listings (<span id="productCount">18</span>)</h2>
+        </div>
+
+        <div class="grid" id="productGrid"></div>
+      </section>
+
+      <!-- Messages / Chat View -->
+      <section id="messagesView" class="app-view hide">
+        <div class="inbox-head">
+          <h2>Your Messages</h2>
+          <p class="stats">Manage conversations with buyers and sellers.</p>
+        </div>
+        <div class="messages-layout">
+          <div class="conversation-list" id="conversationList"></div>
+          <div class="chat-panel" id="chatPanel">
+            <div class="empty-state">Select a conversation from the left to view messages.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sell Item View -->
+      <section id="sellView" class="app-view hide">
+        <div class="seller-layout">
+          <div class="panel">
+            <h2>List a New Product</h2>
+            <p class="panel-lead">Fill out the specifications below to publish your item to the PeerMart catalog.</p>
+            <form id="sellForm">
+              <label for="productTitle">Product Title</label>
+              <input id="productTitle" required placeholder="e.g., Sony WH-1000XM5 Headphones">
+
+              <div class="row">
+                <div>
+                  <label for="productCategory">Category</label>
+                  <select id="productCategory" required>
+                    <option value="Mobile Phones">Mobile Phones</option>
+                    <option value="Laptops">Laptops</option>
+                    <option value="Cars">Cars</option>
+                    <option value="Car Parts">Car Parts</option>
+                    <option value="Bikes">Bikes</option>
+                    <option value="Calculators">Calculators</option>
+                    <option value="Kitchen Appliances">Kitchen Appliances</option>
+                    <option value="Large Appliances">Large Appliances</option>
+                    <option value="Audio & Sound">Audio & Sound</option>
+                    <option value="Smartwatches">Smartwatches</option>
+                    <option value="Cameras">Cameras</option>
+                    <option value="Gaming Consoles">Gaming Consoles</option>
+                    <option value="Home Entertainment">Home Entertainment</option>
+                    <option value="Fitness">Fitness</option>
+                    <option value="Office Electronics">Office Electronics</option>
+                    <option value="Smart Home">Smart Home</option>
+                    <option value="Tools & Hardware">Tools & Hardware</option>
+                    <option value="Furniture">Furniture</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="productPrice">Price (₹)</label>
+                  <input id="productPrice" type="number" min="1" required placeholder="15000">
+                </div>
+              </div>
+
+              <label for="productImage">Image URL (Optional)</label>
+              <input id="productImage" placeholder="https://images.unsplash.com/...">
+
+              <label for="productDescription">Detailed Description</label>
+              <textarea id="productDescription" rows="4" required placeholder="Mention condition, age, inclusions, and reason for selling..."></textarea>
+
+              <button class="btn" type="submit" style="margin-top: 16px;">Publish Listing</button>
+            </form>
+          </div>
+
+          <div class="panel">
+            <h2>Your Inventory & Stats</h2>
+            <p class="panel-lead">Manage your active listings and track your sales performance.</p>
+            <div id="myListingsContainer"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div>
+          <span class="logo" style="font-size: 1.4rem;">PeerMart</span>
+          <p>Connecting trusted local peers for safe, reliable marketplace exchanges.</p>
+        </div>
+        <div>
+          <h3>Buy</h3>
+          <span>Shop Electronics</span>
+          <span>Vehicles & Parts</span>
+          <span>Home & Appliances</span>
+        </div>
+        <div>
+          <h3>Sell</h3>
+          <span>List an Item</span>
+          <span>Seller Dashboard</span>
+          <span>Pricing Tips</span>
+        </div>
+        <div>
+          <h3>Support</h3>
+          <span>Safety Guidelines</span>
+          <span>Community Rules</span>
+          <span>Contact Us</span>
+        </div>
+      </div>
+      <div class="footer-copy">
+        © 2026 PeerMart Inc. All rights reserved. Built with clean HTML, CSS, and JavaScript.
+      </div>
+    </footer>
+  </div>
+
+  <!-- Product Modal Overlay -->
+  <div class="overlay hide" id="ov">
+    <div class="modal" id="modal"></div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
